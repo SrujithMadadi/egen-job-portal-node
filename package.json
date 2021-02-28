@@ -19,14 +19,5 @@
     "nodemon": "^2.0.7",
     "request": "^2.88.2",
     "request-promise": "^4.2.6"
-  },
-  "proxy": "https://jobs.github.com",
-  "devDependencies": {
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.8",
-    "babel-loader": "^8.2.2",
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0",
-    "webpack-node-externals": "^2.5.2"
   }
 }

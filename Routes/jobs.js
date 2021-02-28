@@ -1,6 +1,6 @@
 const express=require("express");
 const app=express();
-const Jobs=require("../controllers/jobs")
+const Jobs=require("../src/controllers/jobs")
 
 app.get("/",(req,res)=>{
     res.status(200).send({status:"Egen-jobportal-node-server is running on port "+process.env.PORT})
