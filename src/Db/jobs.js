@@ -1,4 +1,4 @@
-const rp=require("../rp")
+const rp=require("request-promise")
 
 const jobs=(()=>{
 
