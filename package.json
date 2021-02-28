@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env-cmd -f .env nodemon ./build/app.js",
+    "start": "nodemon ./build/app.js",
     "build": "rm -rf build && webpack --mode production"
   },
   "keywords": [],
@@ -22,6 +22,9 @@
   },
   "proxy": "https://jobs.github.com",
   "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.8",
+    "babel-loader": "^8.2.2",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0",
     "webpack-node-externals": "^2.5.2"
