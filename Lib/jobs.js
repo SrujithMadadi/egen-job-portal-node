@@ -4,9 +4,12 @@ const jobsDbo=require("../Db/jobs")
 
 const jobs=(()=>{
 
-    const getJobs=async (latitude,longitude)=>{
+    const getJobs=async (req)=>{
         try{
-            const jobs=latitude===""?JSON.parse(await jobsDbo.getJobs()):JSON.parse(await jobsDbo.getJobsByLocation(latitude,longitude));
+            let jobs=[];
+            let searchString=await getSearchString(req);
+            jobs=searchString===""?await jobsDbo.getJobs():await jobsDbo.getJobsBySearchCriteria(searchString)
+            jobs=JSON.parse(jobs)
             return jobs.map((job)=>{
                 return {
                     time:Math.abs(Math.round((new Date().getTime()-new Date(job.created_at).getTime())/(1000*60*60)))+"h ago",
@@ -21,6 +24,16 @@ const jobs=(()=>{
         }catch(e){
             console.log(e)
         }
+    }
+
+    const getSearchString=(req)=>{
+        let searchString=""
+        Object.keys(req.query).map((key)=>{
+            if(req.query[key]!=="" && req.query[key]!=="false"){
+                searchString=searchString+key+"="+req.query[key]+"&"
+            }
+        })
+        return searchString!==""?searchString.substring(0,searchString.length-1):searchString
     }
 
     const getJobDetails=async (id)=>{

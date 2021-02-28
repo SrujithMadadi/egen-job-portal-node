@@ -12,16 +12,15 @@ const jobs=(()=>{
         return rp.get({url:"https://jobs.github.com/positions/"+id+".json"})
     }
 
-    const getJobsByLocation=(latitude,longitude)=>{
+    const getJobsBySearchCriteria=(searchString)=>{
         return rp.get({
-            url:"https://jobs.github.com/positions.json?lat="+latitude+"&long="+longitude
+            url:"https://jobs.github.com/positions.json?"+searchString
         })
     }
-
     return {
         getJobs,
         getJobDetails,
-        getJobsByLocation
+        getJobsBySearchCriteria
     }
 })()
 

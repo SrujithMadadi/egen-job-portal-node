@@ -4,7 +4,7 @@ const jobs=(()=>{
 
     const getJobs=async (req,res)=>{
         try{
-            const jobs=await jobsLib.getJobs(req.query.latitude,req.query.longitude);
+            const jobs=await jobsLib.getJobs(req);
             res.status(200).send(jobs)
         }catch(e){
             res.status(400).send([])
