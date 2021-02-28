@@ -1,5 +1,3 @@
-const requestPromise = require("request-promise")
-
 const jobsDbo=require("../Db/jobs")
 
 const jobs=(()=>{
